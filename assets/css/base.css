@@ -1,0 +1,136 @@
+:root {
+    /* #5ce5b4
+       #3fc1c9 
+       #a8e8ca
+       #09bce0
+       #183b56
+    */
+    --primary-color: #32a4c6;
+    --rgba-primary-color: rgba(9, 188, 224, 0.1);
+    /* #999 
+       #364f6b
+       #001f3d
+    */
+    --border-color: #323a6e;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    background-color: var(--primary-color);
+}
+
+/* grid */
+.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* DIch chuyen */
+.mr64 {
+    margin-right: 64px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+}
+
+.modal_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_body {
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 1;
+    animation: Growth linear 0.1s;
+    overflow: hidden;
+}
+
+/* Button style */
+
+.btn {
+    border: none;
+    min-width: 60px;
+    height: 34px;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-radius {
+    border-radius: 50px;
+}
+
+.btn.btn-normal:hover {
+    background-color:rgba(0, 0, 0, 0.2);
+}
+
+.btn.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    line-height: 1.6rem;
+}
+
+.btn.btn-disabled {
+    color: #ccc;
+    cursor: default;
+    background-color: #c3c3c3;
+}
+
+.btn-size-s {
+    height: 32px;
+    font-size: 1.2rem;
+}
+
+/* animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes Growth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
