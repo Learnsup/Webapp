@@ -5,7 +5,9 @@ var courseApi = 'http://localhost:3000/courses';
 
 function start() {
     getCourses(renderCourse);
-    
+    setInterval(function() {
+        getCourses(notification);
+    }, 10 * 1000);
     handleCreateForm();
 }
 
@@ -72,8 +74,6 @@ function handleDeteleCourse(id) {
         })
         .then(function() {
             var courseItem = document.querySelector('.course-item-' + id);
-            console.log('.course-item-' + id);
-            console.log(courseItem);
             if (courseItem) {
                 courseItem.remove();
             }
@@ -113,3 +113,19 @@ function handleCreateForm() {
         });
     }
 }
+
+function notification(courses) {
+    var check = false, dis;
+    courses.forEach(function(course) {
+        let Clock = new Date().getHours() + ':' + new Date().getMinutes();
+        if (course.time == Clock && course.day == today) {
+            check = true;
+            dis = course.name;
+        }
+    })
+    if (check) {
+        //console.log(dis);
+        Push.create("Đã đến giờ " + dis);
+    }
+}
+
