@@ -875,8 +875,7 @@ a{
     position: absolute;
     margin-top: 30px;
     margin-left: -260px;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
+    border-radius: 10px;
   }
   
   .feedback-input {
@@ -953,9 +952,9 @@ a{
     resize: vertical;
   }
   
-  input:hover,
+  #feedback-main input:hover,
   #feedback-comment:hover,
-  input:focus,
+  #feedback-main input:focus,
   #feedback-comment:focus {
     background-color: white;
   }
