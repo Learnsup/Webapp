@@ -5,14 +5,36 @@ var courseApi = 'http://localhost:3000/courses';
 
 function start() {
     getCourses(renderCourse);
-    getCourses(renderTasks);
+    
     handleCreateForm();
 }
 
+var Days = document.querySelectorAll('.calendar__day');
+var Day,
+    today = new Date(),
+    today = today.getDate();
+
+console.log(new Date());
+
+Days.forEach(function(day) {
+    if (day.textContent == today) {   
+        if (!day.classList.contains('today')) {
+            day.classList.add('today');
+        } 
+        Day = day.textContent;
+        document.querySelector('.calendar h1').innerHTML = `Danh sách lịch học ngày ${Day}/6/2021`;
+    }
+    day.onclick = function() {
+        document.querySelector('.today').classList.remove('today');
+        this.classList.add('today');
+        Day = day.textContent;
+        document.querySelector('.calendar h1').innerHTML = `Danh sách lịch học ngày ${Day}/6/2021`;
+        getCourses(renderCourse);
+    }
+})
+
 start();
-
-
-// Functions
+// // Functions
 
 function getCourses(callback) {
     fetch(courseApi)
@@ -50,26 +72,23 @@ function handleDeteleCourse(id) {
         })
         .then(function() {
             var courseItem = document.querySelector('.course-item-' + id);
+            console.log('.course-item-' + id);
+            console.log(courseItem);
             if (courseItem) {
                 courseItem.remove();
-            }
-            var taskItem = document.querySelector('.task-item-' + id);
-            if (taskItem) {
-                taskItem.remove();
             }
         });
 }
 
 function renderCourse(courses) {
-    var listCoursesBlock = document.querySelector('#list-courses');
-    console.log(listCoursesBlock);
+    var listCoursesBlock = document.querySelector('.noteList');
+    courses = courses.filter(function(course) {
+        return course.day == Day;
+    })
     var htmls = courses.map(function(course) {
         return `
-            <li class="course-item course-item-${course.id}">
-                <h4>${course.name}</h4>
-                <p>${course.description}</p>
-                <p>${course.start} - ${course.end}</p>
-                <button class="btn btn-radius btn-normal"onclick="handleDeteleCourse(${course.id})">Xóa</button>
+            <li onclick="handleDeteleCourse(${course.id})" class="course-item-${course.id}">
+                ${course.name} - ${course.time}<button title="Remove note" class="removeNote animate">x</button>
             </li>
         `
     })
@@ -77,54 +96,20 @@ function renderCourse(courses) {
 }
 
 function handleCreateForm() {
-    var createBtn = document.querySelector('#create');
+    var createBtn = document.querySelector('.addNote');
     console.log(createBtn);
 
     createBtn.onclick = function() {
-        var name = document.querySelector('input[name="name"]').value;
-        var description = document.querySelector('input[name="description"]').value;
-        var start = document.querySelector('input[name="start"]').value;
-        var end = document.querySelector('input[name="end"]').value;
-        
+        var name = document.querySelector('input[type="text"]').value;
+        var time = document.querySelector('input[type="time"]').value;
         var formData = {
             name: name,
-            description: description,
-            day: today,
-            start: start,
-            end: end,
+            day: Day,
+            time: time,
         }
 
         createCourse(formData, function() {
             getCourses(renderCourse);
-            getCourses(renderTasks);
         });
     }
-}
-
-// calender
-
-var Days = document.querySelectorAll('.calendar__day');
-var Day,
-    today = new Date(),
-    today = today.getDate();
-
-Days.forEach(function(day) {
-    if (day.textContent == today) {
-        Day = day;    
-        if (!Day.classList.contains('today')) {
-            Day.classList.add('today');
-        } 
-    }
-})
-
-function renderTasks(tasks) {
-    var htmls = tasks.map(function(task) {
-        return `
-            <li class="task-item-${task.id}">
-                <h4>${task.name}</h4>
-            </li>
-        `
-    })
-    Day.innerHTML = today + htmls.join('');
-    console.log(123);
 }
