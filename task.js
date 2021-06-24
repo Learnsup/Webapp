@@ -24,13 +24,13 @@ Days.forEach(function(day) {
             day.classList.add('today');
         } 
         Day = day.textContent;
-        document.querySelector('.calendar h1').innerHTML = `Danh sách lịch học ngày ${Day}/6/2021`;
+        document.querySelector('.calendar h1').innerHTML = `Schedule ${Day}/6/2021`;
     }
     day.onclick = function() {
         document.querySelector('.today').classList.remove('today');
         this.classList.add('today');
         Day = day.textContent;
-        document.querySelector('.calendar h1').innerHTML = `Danh sách lịch học ngày ${Day}/6/2021`;
+        document.querySelector('.calendar h1').innerHTML = `Schedule ${Day}/6/2021`;
         getCourses(renderCourse);
     }
 })
@@ -126,6 +126,19 @@ function notification(courses) {
     if (check) {
         //console.log(dis);
         Push.create("Đã đến giờ " + dis);
+    }
+}
+
+function toggle_visibility() {
+    var e = document.getElementById('feedback-main');
+    var e2 = document.querySelector('.modal');
+    if(e.style.display == 'block') {
+       e.style.display = 'none';
+       e2.style.display = 'none';
+    }
+    else {
+       e2.style.display = 'block';
+       e.style.display = 'block';
     }
 }
 

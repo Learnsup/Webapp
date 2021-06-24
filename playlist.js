@@ -24,43 +24,43 @@ const app = {
   config: {},
   songs: [
     {
-      name: "Nhạc alpha",
+      name: "Music Alpha Waves",
       singer: "",
       path: "./assets/audio/Baroque.mp3",
       image: "https://cdn.tgdd.vn/hoi-dap/1313875/lo-fi-la-gi-cach-de-nhan-biet-ban-dang-nghe-loai-nhac-nay1.jpg"
     },
     {
-      name: "Piano cover",
+      name: "Piano Cover",
       singer: "",
       path: "./assets/audio/Pianocover.mp3",
       image: "https://vietthuongshop.vn/upload/content/images/Tuvan/2019/11-2019/top-10-sheet-piano-nhac-tre-hot-nhat-thang-11-2019-11.gif"
     },
     {
-      name: "Tiếng mưa",
+      name: "Rain",
       singer: "",
       path: "./assets/audio/27-Rain.mp3",
       image: "https://i.ytimg.com/vi/10qcbUwce2g/0.jpg"
     },
     {
-      name: "Tiếng gió",
+      name: "Wind",
       singer: "",
       path: "./assets/audio/Gio.mp3",
       image: "https://img.docbao.vn/images/uploads/2020/06/12/giai-tri/gio.png"
     },
     {
-      name: "Tiếng nước chảy",
+      name: "Stream",
       singer: "",
       path: "./assets/audio/37-Stream.mp3",
       image: "https://i.ytimg.com/vi/9Pg2ldGziLk/maxresdefault.jpg"
     },
     {
-      name: "Tiếng củi cháy",
+      name: "Fire",
       singer: "",
       path: "./assets/audio/Lua.mp3",
       image: "https://i.ytimg.com/vi/_kp0hW_A5_Q/0.jpg"
     },
     {
-      name: "Tiếng quạt",
+      name: "Fan",
       singer: "",
       path: "./assets/audio/11-fan.mp3",
       image: "https://cdn01.dienmaycholon.vn/filewebdmclnew/public/picture/product/product1732/product_1732_1.png"
