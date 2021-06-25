@@ -12,6 +12,7 @@
     box-shadow: 0 1px 20px 1px var(--border-color);
     display: flex;
     justify-content: space-between;
+    z-index: 999;
 }
 
 .video-header {
@@ -70,6 +71,13 @@
 }
 
 .header_navbar-item:hover {
+    cursor: pointer;
+    color: var(--border-color);
+}
+
+.header_navbar-item:hover a {
+    text-decoration: none;
+    color: #fff;
     cursor: pointer;
     color: var(--border-color);
 }
@@ -988,7 +996,7 @@ a{
   
   .feedback-ease {
     width: 0px;
-    height: 38px;
+    height: 36px;
     background-color: #fbfbfb;
     -webkit-transition: .3s ease;
     -moz-transition: .3s ease;

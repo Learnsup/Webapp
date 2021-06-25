@@ -69,7 +69,7 @@ function Showsignup() {
                                     
                                     <div class="auth-form_aside">
                                         <p class="auth-form_policy-text">
-                                            By registering, you agree to Shopee about
+                                            By registering, you agree to Learnsup about
                                             <a href="" class="auth-form_link">Terms of Service</a> &
                                             <a href="" class="auth-form_link">Privacy Policy</a>
                                         </p>
@@ -77,7 +77,7 @@ function Showsignup() {
                     
                                     <div class="auth-form_controls">
                                         <button class="btn btn-normal btn-back">BACK</button>
-                                        <input class="btn btn-primary" type="submit" value="SIGN UP">
+                                        <button class="btn btn-primary" type="submit"><a style="color: #fff" href="/afterlogin.html">SIGN UP</a></button>
                                     </div>
                                 </form>
                             </div>
@@ -101,7 +101,7 @@ function Showsignup() {
                 </div> 
                   `;
         main.appendChild(toast);
-        var siupBtn = document.querySelector('input[type="submit"]');
+        var siupBtn = document.querySelector('button[type="submit"]');
         siupBtn.onclick = function () {
             let pass1 = document.getElementById("pass1").value;
             let pass2 = document.getElementById("pass2").value;
@@ -112,8 +112,8 @@ function Showsignup() {
                     pass: pass1,
                 }
                 createAccount(dataForm);
+                location.replace('/afterlogin.html');
                 console.log(123);
-                window.location.href = "facebook.com";
             }else {
                 alert("Wrong password");
             }
@@ -165,7 +165,7 @@ function Showlogin() {
                     
                                     <div class="auth-form_controls">
                                         <button class="btn btn-normal btn-back">BACK</button>
-                                        <input class="btn btn-primary" type="submit" value="LOG IN">
+                                        <button class="btn btn-primary" type="submit"><a style="color: #fff" href="/afterlogin.html">Log In</a></button>
                                     </div>
                                 </form>    
                             </div>

@@ -1,13 +1,21 @@
 
 
 var courseApi = 'http://localhost:3000/courses';
+var minutesafter;
 
 
 function start() {
     getCourses(renderCourse);
     setInterval(function() {
-        getCourses(notification);
-    }, 10 * 1000);
+        var minutesbefore = new Date().getMinutes();
+        if (minutesbefore != minutesafter) {
+            console.log('minutesbefore: ' + minutesbefore);
+            console.log('minutesafter: ' + minutesafter);
+            minutesafter = minutesbefore;
+            console.log('minutesafter: ' + minutesafter);
+            FixNotifi();
+        }
+    }, 1000);
     handleCreateForm();
 }
 
@@ -34,6 +42,10 @@ Days.forEach(function(day) {
         getCourses(renderCourse);
     }
 })
+
+function FixNotifi() {
+    getCourses(notification);
+}
 
 start();
 // // Functions
@@ -117,15 +129,21 @@ function handleCreateForm() {
 function notification(courses) {
     var check = false, dis;
     courses.forEach(function(course) {
-        let Clock = new Date().getHours() + ':' + new Date().getMinutes();
+        let Hours = new Date().getHours();
+        let Minutes = new Date().getMinutes();
+        if (Hours.length == 1) Hours = '0' + Hours;
+        if (Minutes.length == 1) Minutes = 0 + Minutes;
+        let Clock = Hours + ':' + Minutes
+        console.log(course.time);
+        console.log(Clock);
         if (course.time == Clock && course.day == today) {
             check = true;
             dis = course.name;
+            dis.toLowerCase();
         }
     })
     if (check) {
-        //console.log(dis);
-        Push.create("Đã đến giờ " + dis);
+        Push.create("It's time to " + dis);
     }
 }
 
@@ -140,5 +158,9 @@ function toggle_visibility() {
        e2.style.display = 'block';
        e.style.display = 'block';
     }
+}
+
+function non() {
+    location.replace('https://lienminh.garena.vn/');
 }
 
