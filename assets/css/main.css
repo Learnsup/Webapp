@@ -458,9 +458,7 @@ a{
   }
 
   .calendar__day {
-    border-right: 1px solid #e1e1e1;
-    border-top: 1px solid #e1e1e1;
-    border-left: 1px solid #e1e1e1;
+    border: 1px solid #e1e1e1;
   }
 
   .day {
@@ -492,7 +490,7 @@ a{
 	border-radius:  20px;
 	overflow: hidden;
 	max-width: 1300px;
-	height: 620px;
+	height: 660px;
 	background-color: #ffffff;
 	color: #333333;
 }

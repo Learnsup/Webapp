@@ -150,6 +150,10 @@ function notification(courses) {
 function toggle_visibility() {
     var e = document.getElementById('feedback-main');
     var e2 = document.querySelector('.modal');
+    e2.onclick = function() {
+        e.style.display = 'none';
+        e2.style.display = 'none';
+    }
     if(e.style.display == 'block') {
        e.style.display = 'none';
        e2.style.display = 'none';
@@ -158,9 +162,5 @@ function toggle_visibility() {
        e2.style.display = 'block';
        e.style.display = 'block';
     }
-}
-
-function non() {
-    location.replace('https://lienminh.garena.vn/');
 }
 
